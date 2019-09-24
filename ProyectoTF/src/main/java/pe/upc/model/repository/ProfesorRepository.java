@@ -13,7 +13,7 @@ import pe.upc.model.entity.Profesor;
 @Named
 public class ProfesorRepository implements Serializable{
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 3L;
 	
 	@PersistenceContext(unitName="pwTF")
 	private EntityManager em;

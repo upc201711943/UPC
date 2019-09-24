@@ -15,7 +15,7 @@ import pe.upc.model.entity.Curso;
 @Named
 public class CursoRepository implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 2L;
 	
 	@PersistenceContext(unitName="pwTF")
 	private EntityManager em;

@@ -41,7 +41,7 @@ public class AlumnoController implements Serializable{
 		try {
 			alumnos = alumnoBusiness.listarAlumno();
 		} catch (Exception e) {
-			Message.messageError("Error Carga de Productos :" + e.getMessage());
+			Message.messageError("Error Carga de Alumnos :" + e.getMessage());
 		}
 	}
 

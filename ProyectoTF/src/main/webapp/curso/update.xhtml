@@ -16,34 +16,24 @@
 				<p:toolbar>
 					<f:facet name="right">
 						<p:commandButton value="Guardar" icon="ui-icon-disk" 
-						action="#{alumnoController.saveAlumno()}" ajax="false"/>
+						action="#{cursoController.saveCurso()}" ajax="false"/>
 
 						<p:commandButton value="Regresar" icon="ui-icon-disk"
-						  action="#{alumnoController.listAlumno()}"
+						  action="#{cursoController.listCurso()}"
 						  immediate="true"
 						  ajax="false"/>
 					</f:facet>
 				</p:toolbar>
 
 
-				<p:panelGrid id="panGridAlumno" columns="2" style="width:100%">
+				<p:panelGrid id="panGridCurso" columns="2" style="width:100%">
 					<p:outputLabel value="Código:" for="txtCodigo" />
 					<p:inputText id="txtCodigo" required="true" maxlength="45"
-						value="#{alumnoController.alumno.codigo}" />
+						value="#{cursoController.curso.codigo}" />
 					
 					<p:outputLabel value="Nombre:" for="txtNombre" />
 					<p:inputText id="txtNombre" required="true" maxlength="45"
-						value="#{alumnoController.alumno.nombre}" />
-					<p:outputLabel value="Apellido:" for="txtApellido" />
-					<p:inputText id="txtApellido" required="true" maxlength="45"
-						value="#{alumnoController.alumno.apellido}" />
-					<p:outputLabel value="Email:" for="txtEmail" />
-					<p:inputText id="txtEmail" required="true" maxlength="45"
-						value="#{alumnoController.alumno.email}" />
-					
-					<p:outputLabel value="Contraseña:" for="txtContrasenia" />
-					<p:inputText id="txtContrasenia" type="password" required="true" maxlength="45"
-						value="#{alumnoController.alumno.password}" />
+						value="#{cursoController.curso.nombre}" />
 				</p:panelGrid>
 				<br></br>
 
@@ -55,4 +45,3 @@
 
 </body>
 </html>
-
