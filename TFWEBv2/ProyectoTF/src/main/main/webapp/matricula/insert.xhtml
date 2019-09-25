@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+
+	<ui:composition template="/WEB-INF/templates/master.xhtml">
+		<ui:define name="content">
+			<h:form id="frm">
+				<p:growl id="men" />
+
+				<p:toolbar>
+					<f:facet name="right">
+						<p:commandButton value="Guardar" icon="ui-icon-disk" 
+						action="#{matriculaController.saveMatricula()}" ajax="false"/>
+
+						<p:commandButton value="Regresar" icon="ui-icon-disk"
+						  action="#{matriculaController.listMatricula()}"
+						  immediate="true"
+						  ajax="false"/>
+					</f:facet>
+				</p:toolbar>
+
+
+				<p:panelGrid id="panGridMatricula" columns="2" style="width:100%">
+					<p:outputLabel value="Seccion: " for="cboSeccion" />
+					<p:selectOneMenu id="cboSeccion" required="true" effect="drop"
+						value="#{matriculaController.seccion}"
+						converter="omnifaces.SelectItemsConverter">
+						<f:selectItem itemLabel="Seleccione una opción"
+							noSelectionOption="true" itemValue="" />
+						<f:selectItems value="#{matriculaController.secciones}"
+							var="seccion" itemLabel="#{seccion.id}"
+							itemValue="#{seccion}" />
+					</p:selectOneMenu>
+					
+					<p:outputLabel value="Alumno: " for="cboAlumno" />
+					<p:selectOneMenu id="cboAlumno" required="true" effect="drop"
+						value="#{matriculaController.alumno}"
+						converter="omnifaces.SelectItemsConverter">
+						<f:selectItem itemLabel="Seleccione una opción"
+							noSelectionOption="true" itemValue="" />
+						<f:selectItems value="#{matriculaController.alumnos}"
+							var="alumno" itemLabel="#{alumno.codigo}"
+							itemValue="#{alumno}" />
+					</p:selectOneMenu>
+				</p:panelGrid>
+				<br></br>
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>

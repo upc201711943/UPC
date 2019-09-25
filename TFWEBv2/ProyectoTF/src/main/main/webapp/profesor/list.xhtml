@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+
+	<ui:composition template="/WEB-INF/templates/master.xhtml">
+		<ui:define name="content">
+			<h:form id="frm">
+				<p:growl id="men" />
+
+				<p:toolbar>
+					<f:facet name="right">
+						<p:commandButton value="Nuevo" icon="ui-icon-disk"
+						  action="#{profesorController.newProfesor()}"
+						  ajax="false"/>
+						
+						 <p:commandButton value="Editar" icon="ui-icon-disk"
+						  action="#{profesorController.editProfesor()}"
+						  ajax="false"/>
+						
+
+					</f:facet>
+				</p:toolbar>
+
+				<p:dataTable id="datTabProfesores"
+					emptyMessage="No existen profesores registrados"
+					value="#{profesorController.profesores}" var="profesor"
+					
+					rowKey="#{profesor.id}"
+					selectionMode="single"
+					selection="#{profesorController.profesorSelect}"
+					
+					paginator="true" rows="10">
+					
+					
+					<p:ajax event="rowSelect"
+						listener="#{profesorController.selectProfesor}" />
+					
+
+					<p:column headerText="Id">
+						<p:outputLabel value="#{profesor.id}" />
+					</p:column>
+					<p:column headerText="Código">
+						<p:outputLabel value="#{profesor.codigo}" />
+					</p:column>
+					<p:column headerText="Nombre">
+						<p:outputLabel value="#{profesor.nombre}" />
+					</p:column>
+					<p:column headerText="Apellido">
+						<p:outputLabel value="#{profesor.apellido}" />
+					</p:column>
+					<p:column headerText="Email">
+						<p:outputLabel value="#{profesor.email}" />
+					</p:column>
+					<p:column headerText="Telefono">
+						<p:outputLabel value="#{profesor.telefono}" />
+					</p:column>
+					<p:column headerText="Nota">
+						<p:outputLabel value="#{profesor.nota}" />
+					</p:column>
+					<p:column headerText="Calificacion">
+						<p:outputLabel value="#{profesor.calificacion}" />
+					</p:column>
+					<p:column headerText="Grado">
+						<p:outputLabel value="#{profesor.grado}" />
+					</p:column>
+					<p:column headerText="Contraseña">
+						<p:outputLabel value="#{profesor.password}" />
+					</p:column>
+					
+				</p:dataTable>
+
+				
+
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>
