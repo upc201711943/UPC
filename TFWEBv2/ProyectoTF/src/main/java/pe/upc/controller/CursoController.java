@@ -70,9 +70,22 @@ public class CursoController implements Serializable{
 				cursoBusiness.actualizar(curso);
 				Message.messageInfo("Registro actualizado exitosamente");
 			} else {
-				cursoBusiness.registrar(curso);
-				Message.messageInfo("Registro guardado exitosamente");
+				if(cursoBusiness.listarCursoxCodigo(curso.getCodigo())==null)
+				{
+					if(cursoBusiness.listarCursoxNombre(curso.getNombre())==null)
+					{
+						cursoBusiness.registrar(curso);
+						Message.messageInfo("Registro guardado exitosamente");
+					}
+					else {
+						Message.messageInfo("Ya se encuentra registrado un curso con ese nombre");
+					}
 
+				}
+				
+				else {
+					Message.messageInfo("El código del curso ya se encuentra registrado");
+				}
 			}
 			this.getAllCursos();
 			resetForm();

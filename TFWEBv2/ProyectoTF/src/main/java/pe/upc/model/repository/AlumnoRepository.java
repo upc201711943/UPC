@@ -37,6 +37,29 @@ public class AlumnoRepository implements Serializable{
 		alumnos= query.getResultList();
 		return alumnos;
 	}
-	
+	public List<Alumno> listarAlumnoxEmail(String email) throws Exception {
+		List<Alumno> lista= new ArrayList<>();
+
+		TypedQuery<Alumno> query = em.createQuery("FROM Alumno p WHERE p.email LIKE ?1", Alumno.class);
+		query.setParameter(1, "%" + email + "%");
+		lista= query.getResultList();
+		
+		if(lista.isEmpty())
+			return null;
+		else
+			return lista;
+	}
+	public List<Alumno> listarAlumnoxCodigo(String codigo) throws Exception {
+		List<Alumno> lista = new ArrayList<>();
+
+		TypedQuery<Alumno> query = em.createQuery("FROM Alumno p WHERE p.codigo LIKE ?1", Alumno.class);
+		query.setParameter(1, "%" + codigo + "%");
+		lista= query.getResultList();
+
+		if(lista.isEmpty())
+			return null;
+		else
+			return lista;
+	}
 	
 }

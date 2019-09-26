@@ -1,5 +1,4 @@
 package pe.upc.model.repository;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,25 +13,35 @@ import pe.upc.model.entity.Seccion;
 
 @Named
 public class AsesoriaRepository implements Serializable{
-
-	private static final long serialVersionUID = 2L;
+	private static final long serialVersionUID = 6L;
 	
 	@PersistenceContext(unitName="pwTF")
 	private EntityManager em;
 	
-	public Long registrar(Asesoria asesoria) throws Exception{
+	public Long agregar(Asesoria asesoria) throws Exception{
 		em.persist(asesoria);
-		return asesoria.getCodigo();
+		return asesoria.getId();
 	}
 	
 	public Long actualizar(Asesoria asesoria) throws Exception{
 		em.merge(asesoria);
-		return asesoria.getCodigo();	
+		return asesoria.getId();
 	}
+	
+	
 	public void eliminar(Asesoria asesoria) throws Exception{
 		em.remove(asesoria);		
 	}
-	public List<Asesoria> listarAsesoriaxSeccion(Seccion seccion) throws Exception {
+
+	public List<Asesoria>listarAsesoria() throws Exception{
+		List<Asesoria>asesorias=new ArrayList<>();
+		
+		TypedQuery<Asesoria> query=em.createQuery("FROM Asesoria p",Asesoria.class);
+		asesorias=query.getResultList();
+		
+		return asesorias;	
+	}
+		public List<Asesoria> listarAsesoriaxSeccion(Seccion seccion) throws Exception {
 		List<Asesoria> asesorias= new ArrayList<>();
 
 		TypedQuery<Asesoria> query = em.createQuery("FROM Asesoria p WHERE p.seccion LIKE ?1", Asesoria.class);
@@ -41,7 +50,4 @@ public class AsesoriaRepository implements Serializable{
 
 		return asesorias;
 	}
-	
-
-	
 }

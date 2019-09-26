@@ -30,7 +30,12 @@ public class AlumnoBusiness implements Serializable{
 	public List<Alumno> listarAlumno() throws Exception {
 		return alumnoRepository.listarAlumno();
 	}
-	
+	public List<Alumno> listarAlumnoxEmail(String email)throws Exception{
+		return alumnoRepository.listarAlumnoxEmail(email);
+	}
+	public List<Alumno> listarAlumnoxCodigo(String codigo)throws Exception{
+		return alumnoRepository.listarAlumnoxCodigo(codigo);
+	}
 	
 	
 

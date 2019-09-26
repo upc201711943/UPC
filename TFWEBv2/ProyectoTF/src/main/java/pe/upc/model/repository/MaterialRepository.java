@@ -1,5 +1,4 @@
 package pe.upc.model.repository;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,22 +13,30 @@ import pe.upc.model.entity.Seccion;
 @Named
 public class MaterialRepository implements Serializable{
 	
-private static final long serialVersionUID = 4L;
+private static final long serialVersionUID = 9L;
 	
 	@PersistenceContext(unitName="pwTF")
 	private EntityManager em;
 	
 	public Long registrar(Material material) throws Exception{
 		em.persist(material);
-		return material.getCodigo();
+		return material.getId();
 	}
 	public Long actualizar(Material material) throws Exception{
 		em.merge(material);
-		return material.getCodigo();
+		return material.getId();
 	}
 	
 	public void eliminar(Material material) throws Exception{
 		em.remove(material);		
+	}
+	public List<Material> ListarMaterial() throws Exception {
+		List<Material> materiales= new ArrayList<>();
+
+		TypedQuery<Material> query = em.createQuery("FROM Material p", Material.class);
+		materiales= query.getResultList();
+
+		return materiales;
 	}
 	
 

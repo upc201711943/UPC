@@ -37,6 +37,12 @@ public class CursoBusiness implements Serializable{
 	public List<Curso> listarCursoxNombre(String nombre)throws Exception{
 		return cursoRepository.ListarCursoxNombre(nombre);
 	}
+	public List<Curso> listarCursoxCodigo(String nombre)throws Exception{
+		return cursoRepository.ListarCursoxCodigo(nombre);
+	}
+	public Curso CursoxNombre(String nombre)throws Exception{
+		return cursoRepository.CursoxNombre(nombre);
+	}
 	
 	
 	

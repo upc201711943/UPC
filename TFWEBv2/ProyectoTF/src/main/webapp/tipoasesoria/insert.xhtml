@@ -16,28 +16,25 @@
 				<p:toolbar>
 					<f:facet name="right">
 						<p:commandButton value="Guardar" icon="ui-icon-disk" 
-						action="#{cursoController.saveCurso()}" ajax="false"/>
+						action="#{tipoAsesoriaController.saveTipoAsesoria()}" ajax="false"/>
 
 						<p:commandButton value="Regresar" icon="ui-icon-disk"
-						  action="#{cursoController.listCurso()}"
+						  action="#{tipoAsesoriaController.listTipoAsesoria()}"
 						  immediate="true"
 						  ajax="false"/>
 					</f:facet>
 				</p:toolbar>
 
 
-				<p:panelGrid id="panGridCurso" columns="2" style="width:100%">
-					<p:outputLabel value="Código:" for="txtCodigo" />
-					<p:inputText id="txtCodigo" required="true" maxlength="10"
-						value="#{cursoController.curso.codigo}" />
-					
+				<p:panelGrid id="panGridTipoAsesoria" columns="2" style="width:100%">
 					<p:outputLabel value="Nombre:" for="txtNombre" />
 					<p:inputText id="txtNombre" required="true" maxlength="50"
-						value="#{cursoController.curso.nombre}" />
+						value="#{tipoAsesoriaController.tipoAsesoria.nombre}" />
+					<p:outputLabel value="Precio:" for="txtPrecio" />
+					<p:inputText id="txtPrecio" required="true" maxlength="45"
+						value="#{tipoAsesoriaController.tipoAsesoria.precio}" />
 				</p:panelGrid>
 				<br></br>
-
-
 
 			</h:form>
 		</ui:define>

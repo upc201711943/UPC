@@ -29,6 +29,12 @@ public class ProfesorBusiness implements Serializable{
 	public List<Profesor> listarProfesor() throws Exception {
 		return profesorRepository.listarProfesor();
 	}
-		
+	public List<Profesor> listarProfesorxEmail(String email)throws Exception{
+		return profesorRepository.listarProfesorxEmail(email);
+	}
+	public List<Profesor> listarProfesorxCodigo(String codigo)throws Exception{
+		return profesorRepository.listarProfesorxCodigo(codigo);
+	}
+	
 
 }

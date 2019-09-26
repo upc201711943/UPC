@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+
+	<ui:composition template="/WEB-INF/templates/master.xhtml">
+		<ui:define name="content">
+			<h:form id="frm">
+				<p:growl id="men" />
+
+				<p:toolbar>
+					<f:facet name="right">
+						<p:commandButton value="Nuevo" icon="ui-icon-disk"
+						  action="#{matriculaController.newMatricula()}"
+						  ajax="false"/>
+						
+						 <p:commandButton value="Editar" icon="ui-icon-disk"
+						  action="#{matriculaController.editMatricula()}"
+						  ajax="false"/>
+						
+
+					</f:facet>
+				</p:toolbar>
+			
+				<p:dataTable id="datTabMatriculas"
+					emptyMessage="No existen matriculas registradas"
+					value="#{matriculaController.matriculas}" var="matricula"
+					
+					rowKey="#{matricula.id}"
+					selectionMode="single"
+					selection="#{matriculaController.matriculaSelect}"
+					
+					paginator="true" rows="10">
+					
+					
+					<p:ajax event="rowSelect"
+						listener="#{matriculaController.selectMatricula}" />
+					
+
+					<p:column headerText="Id">
+						<p:outputLabel value="#{matricula.id}" />
+					</p:column>
+					<p:column headerText="Código de Curso: ">
+						<p:outputLabel value="#{matricula.seccion.curso.codigo}" />
+					</p:column>
+					<p:column headerText="Nombre Curso">
+						<p:outputLabel value="#{matricula.seccion.curso.nombre}" />
+					</p:column>
+					<p:column headerText="Nombre Profesor">
+						<p:outputLabel value="#{matricula.seccion.profesor.nombre}" />
+					</p:column>
+					<p:column headerText="Apellido Profesor">
+						<p:outputLabel value="#{matricula.seccion.profesor.apellido}" />
+					</p:column>					
+					<p:column headerText="Código de Alumno">
+						<p:outputLabel value="#{matricula.alumno.codigo}" />
+					</p:column>
+					<p:column headerText="Nombre Alumno">
+						<p:outputLabel value="#{matricula.alumno.nombre}" />
+					</p:column>
+					<p:column headerText="Apellido Alumno">
+						<p:outputLabel value="#{matricula.alumno.apellido}" />
+					</p:column>
+				</p:dataTable>
+
+				
+			</h:form>
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>

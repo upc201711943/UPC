@@ -36,5 +36,29 @@ public class ProfesorRepository implements Serializable{
 		profesores= query.getResultList();
 		return profesores;
 	}
+	public List<Profesor> listarProfesorxEmail(String email) throws Exception {
+		List<Profesor> lista= new ArrayList<>();
+
+		TypedQuery<Profesor> query = em.createQuery("FROM Profesor p WHERE p.email LIKE ?1", Profesor.class);
+		query.setParameter(1, "%" + email + "%");
+		lista= query.getResultList();
+		
+		if(lista.isEmpty())
+			return null;
+		else
+			return lista;
+	}
+	public List<Profesor> listarProfesorxCodigo(String codigo) throws Exception {
+		List<Profesor> lista = new ArrayList<>();
+
+		TypedQuery<Profesor> query = em.createQuery("FROM Profesor p WHERE p.codigo LIKE ?1", Profesor.class);
+		query.setParameter(1, "%" + codigo + "%");
+		lista= query.getResultList();
+
+		if(lista.isEmpty())
+			return null;
+		else
+			return lista;
+	}
 	
 }

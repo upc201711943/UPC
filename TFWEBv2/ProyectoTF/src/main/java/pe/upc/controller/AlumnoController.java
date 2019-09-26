@@ -67,12 +67,25 @@ public class AlumnoController implements Serializable{
 		try {
 
 			if (alumno.getId() != null) {
+		
 				alumnoBusiness.actualizar(alumno);
 				Message.messageInfo("Registro actualizado exitosamente");
 			} else {
-				alumnoBusiness.registrar(alumno);
-				Message.messageInfo("Registro guardado exitosamente");
+				if(alumnoBusiness.listarAlumnoxCodigo(alumno.getCodigo())==null)
+				{
+					if(alumnoBusiness.listarAlumnoxEmail(alumno.getEmail())==null) {
+						alumnoBusiness.registrar(alumno);
+						Message.messageInfo("Registro guardado exitosamente");
+				}
+					else {
+						Message.messageInfo("El e-mail ya se encuentra registrado");
+					}
 
+				}
+				else {
+					Message.messageInfo("El código de alumno ya se encuentra registrado");
+				}
+			
 			}
 			this.getAllAlumnos();
 			resetForm();

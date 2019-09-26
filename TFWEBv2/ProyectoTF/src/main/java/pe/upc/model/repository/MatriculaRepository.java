@@ -12,20 +12,20 @@ import javax.persistence.TypedQuery;
 import pe.upc.model.entity.Matricula;
 import pe.upc.model.entity.Seccion;
 import pe.upc.model.entity.Alumno;
+
 @Named
 public class MatriculaRepository implements Serializable{
-
-private static final long serialVersionUID = 5L;
+private static final long serialVersionUID = 7L;
 	
 	@PersistenceContext(unitName="pwTF")
 	private EntityManager em;
 	public Long agregar(Matricula matricula) throws Exception{
 		em.persist(matricula);
-		return matricula.getCodigo();
+		return matricula.getId();
 	}
 	public Long actualizar(Matricula matricula) throws Exception{
 		em.merge(matricula);
-		return matricula.getCodigo();
+		return matricula.getId();
 	}
 	
 	public void eliminar(Matricula matricula) throws Exception{
@@ -50,5 +50,14 @@ private static final long serialVersionUID = 5L;
 
 		return secciones;
 	}
+	
+	public List<Matricula> listarMatricula() throws Exception {
+		List<Matricula> matriculas= new ArrayList<>();
 
+		TypedQuery<Matricula> query = em.createQuery("FROM Matricula p", Matricula.class);
+		matriculas= query.getResultList();
+
+		return matriculas;
+	}
+	
 }

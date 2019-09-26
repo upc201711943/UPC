@@ -1,5 +1,4 @@
 package pe.upc.model.entity;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,13 +9,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Material")
+@Table(name="materiales")
 public class Material {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="codigoMaterial",nullable=false)
-	private Long codigo;
+	@Column(name="idMaterial",nullable=false)
+	private Long id;
 	
 	@Column(name="nombreMaterial",nullable=false)
 	private String nombre;
@@ -26,8 +25,9 @@ public class Material {
 
 	private boolean disponibilidad;
 	
-	@Column(name="codigoTipoMaterial",nullable=false)
-	private TipoMaterial tipo_material;
+	@ManyToOne
+	@JoinColumn(name="codigoTipoMaterial",nullable=false)
+	private TipoMaterial tipoMaterial;
 
 
 	@ManyToOne
@@ -60,12 +60,12 @@ public class Material {
 		this.contenido = contenido;
 	}
 
-	public Long getCodigo() {
-		return codigo;
+	public Long getId() {
+		return id;
 	}
 
-	public void setCodigo(Long codigo) {
-		this.codigo = codigo;
+	public void setId(Long id) {
+		this.id= id;
 	}
 
 	public String getNombre() {
@@ -77,12 +77,12 @@ public class Material {
 	}
 
 
-	public TipoMaterial getTipo_material() {
-		return tipo_material;
+	public TipoMaterial getTipoMaterial() {
+		return tipoMaterial;
 	}
 
-	public void setTipo_material(TipoMaterial tipo_material) {
-		this.tipo_material = tipo_material;
+	public void setTipoMaterial(TipoMaterial tipoMaterial) {
+		this.tipoMaterial = tipoMaterial;
 	}
 	
 }

@@ -49,6 +49,34 @@ public class CursoRepository implements Serializable {
 		query.setParameter(1, "%" + nombre + "%");
 		cursos = query.getResultList();
 
-		return cursos;
+		if(cursos.isEmpty())
+			return null;
+		else
+			return cursos;
+	}
+	public List<Curso> ListarCursoxCodigo(String nombre) throws Exception {
+		List<Curso> cursos = new ArrayList<>();
+
+		TypedQuery<Curso> query = em.createQuery("FROM Curso p WHERE p.codigo LIKE ?1", Curso.class);
+		query.setParameter(1, "%" + nombre + "%");
+		cursos = query.getResultList();
+
+		if(cursos.isEmpty())
+			return null;
+		else
+			return cursos;
+	}
+
+	public Curso CursoxNombre(String nombre) throws Exception {
+		List<Curso> cursos = new ArrayList<>();
+
+		TypedQuery<Curso> query = em.createQuery("FROM Curso p WHERE p.nombre LIKE ?1", Curso.class);
+		query.setParameter(1, "%" + nombre + "%");
+		cursos = query.getResultList();
+
+		if(cursos.isEmpty())
+			return null;
+		else
+			return cursos.get(0);
 	}
 }

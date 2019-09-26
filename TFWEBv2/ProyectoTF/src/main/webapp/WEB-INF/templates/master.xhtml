@@ -13,16 +13,34 @@
 	<ui:insert name="header">
 		<h:form>
 			<p:menubar autoDisplay="false">
-				<p:submenu label="Mantenimiento" icon="ui-icon-pencil">
+				<p:submenu label="Usuarios" icon="ui-icon-pencil">
 					<p:menuitem icon="ui-icon-document" value="Alumnos"
 						url="/alumno/list.xhtml" />
-					<p:menuitem icon="ui-icon-document" value="Cursos"
-						url="/curso/list.xhtml" />
 					<p:menuitem icon="ui-icon-document" value="Profesores"
 						url="/profesor/list.xhtml" />
+					
+				</p:submenu>
+				<p:submenu label="Tipos" icon="ui-icon-pencil">
+					<p:menuitem icon="ui-icon-document" value="Tipos de Asesorías"
+						url="/tipoasesoria/list.xhtml" />
+					<p:menuitem icon="ui-icon-document" value="Tipos de Materiales"
+						url="/tipomaterial/list.xhtml" />
+					
+					
+				</p:submenu>
+				<p:submenu label="Registros" icon="ui-icon-pencil">
+					
+					<p:menuitem icon="ui-icon-document" value="Matrículas"
+						url="/matricula/list.xhtml" />
+					<p:menuitem icon="ui-icon-document" value="Cursos"
+						url="/curso/list.xhtml" />
 					<p:menuitem icon="ui-icon-document" value="Secciones"
 						url="/seccion/list.xhtml" />
-				
+					
+					<p:menuitem icon="ui-icon-document" value="Asesorías"
+						url="/asesoria/list.xhtml" />
+					<p:menuitem icon="ui-icon-document" value="Materiales"
+						url="/material/list.xhtml" />			
 				</p:submenu>
 			</p:menubar>
 		</h:form>

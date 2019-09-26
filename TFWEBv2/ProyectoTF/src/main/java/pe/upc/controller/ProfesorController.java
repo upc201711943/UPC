@@ -66,13 +66,26 @@ public class ProfesorController implements Serializable{
 		String view = "";
 		try {
 
+			
 			if (profesor.getId() != null) {
 				profesorBusiness.actualizar(profesor);
 				Message.messageInfo("Registro actualizado exitosamente");
 			} else {
+				if(profesorBusiness.listarProfesorxCodigo(profesor.getCodigo())==null)
+				{
+					if(profesorBusiness.listarProfesorxEmail(profesor.getEmail())==null) {
+						
 				profesorBusiness.registrar(profesor);
 				Message.messageInfo("Registro guardado exitosamente");
+					}
+					else {
+						Message.messageInfo("El e-mail ya se encuentra registrado");
+					}
 
+				}
+				else {
+					Message.messageInfo("El código del profesor ya se encuentra registrado");
+				}
 			}
 			this.getAllProfesores();
 			resetForm();

@@ -25,7 +25,7 @@ public class Alumno {
 	
 	@Column(name="apellidoAlumno",nullable=false)
 	private String apellido;
-	
+
 	@Column(name="emailAlumno", nullable=false)
 	private String email;
 	

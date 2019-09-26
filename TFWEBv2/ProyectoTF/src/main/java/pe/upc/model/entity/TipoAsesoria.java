@@ -8,13 +8,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "TipoAsesoria")
+@Table(name = "tipoasesorias")
 public class TipoAsesoria {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="codigoTipo",nullable=false)
-	private Long codigo;
+	@Column(name="idTipo",nullable=false)
+	private Long id;
 	
 	@Column(name="nombreTipo",nullable=false)
 	private String nombre;
@@ -22,12 +22,12 @@ public class TipoAsesoria {
 	@Column(name="precioTipo",nullable=false)
 	private float precio;
 
-	public Long getCodigo() {
-		return codigo;
+	public Long getId() {
+		return id;
 	}
 
-	public void setCodigo(Long codigo) {
-		this.codigo = codigo;
+	public void setId(Long id) {
+		this.id= id;
 	}
 
 	public String getNombre() {
